@@ -3,7 +3,7 @@ import java.util.LinkedList;
 public class LowestCommonAncestor {
     
     private static class Node {
-        Node left; 
+	Node left; 
 	Node right; 
 	int data;
 
@@ -124,7 +124,7 @@ public class LowestCommonAncestor {
 	    return rightRes;
 	}
 	
-	
+	// we are one of the target nodes while travesing the tree
 	if (root == p && leftRes.lca == null && rightRes.lca == null) {
 	    return new LCA(root, false);
 	}
@@ -133,7 +133,8 @@ public class LowestCommonAncestor {
 	else if (root == p && (leftRes.lca != null || rightRes.lca != null)) {
 	    return new LCA(root, true);
 	}
-
+	
+	// we are one of the target nodes while travesing the tree
 	if (root == q && leftRes.lca == null && rightRes.lca == null) {
 	    return new LCA(root, false);
 	}
@@ -143,6 +144,7 @@ public class LowestCommonAncestor {
 	    return new LCA(root, true);
 	}
 
+	// this is the common ancestor - just designated the common ancestor !! 
 	if (leftRes.lca != null && rightRes.lca != null) {
 	    return new LCA(root, true);
 	}
