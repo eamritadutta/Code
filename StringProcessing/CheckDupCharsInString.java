@@ -3,7 +3,7 @@ To check if an input string contains duplicates we can do the following:
 
 Solution 1: Use two loops to check for duplicates. Complexity: O(n^2)
 
-Solution 2: We can use hash the characters and check if an element already exists. Complexity: O(n); Space complexity: 	   O(256 characters)
+Solution 2: We can use hash the characters and check if an element already exists. Complexity: O(n); Space complexity: O(256 characters)
 
 Solution 3: Use a 32-bit int. This process is shown below. Time Complexity (worst case): O(n); Space complexity: O(1) 
 */
