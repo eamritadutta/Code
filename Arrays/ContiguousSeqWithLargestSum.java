@@ -11,6 +11,10 @@ public class ContiguousSeqWithLargestSum {
 
 	int[] arr2 = {-20, -3, -8, -1, -12, -4, -25, -31};
 	printLargestContSubSeq(arr2);
+	
+	// will not print anything, since we do not have a strictly - increasing monotone sequence here
+	int[] arr3 = {5, 4, 3, 2, 1, 0};
+	printLongestIncreasingSequence(arr3);
     }
 
     private static void printLargestContSubSeq(int[] arr) {
