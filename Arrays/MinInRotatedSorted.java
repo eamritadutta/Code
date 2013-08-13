@@ -5,15 +5,24 @@ public class MinInRotatedSorted {
 	test2();
 	test3();
 	test4();
+	test5();
+	test6();
     }
 
     private static int getMinInRotatedSorted(int[] arr) throws Exception {
 	if (arr == null || arr.length == 0) 
 	    throw new Exception("Input array is empty or null");
 
-	// array is not rotated 
-	if (arr[0] < arr[arr.length-1]) {
-	    return arr[0];
+	int mid = 0 + (arr.length -1) / 2;
+
+	// array is sorted (in the default ascending order) but not rotated 
+	if (arr[0] < arr[mid] && arr[mid] < arr[arr.length-1]) { // 1 2 3 4 5
+	    throw new Exception("Input array is sorted (in the default ascending order) but not rotated.");
+	}
+
+	// array is not sorted (in the default ascending order), but in the descending order, which is not the norm
+	else if (arr[0] > arr[mid] && arr[mid] > arr[arr.length-1]) { // 5 4 3 2 1 
+	    throw new Exception("Input array is not sorted (in the default ascending order - but in the descending order), and not rotated.");
 	}
 
 	return getMinInRotatedSorted(arr, 0, arr.length-1);
@@ -41,8 +50,10 @@ public class MinInRotatedSorted {
 	    System.out.println("The min element is: " + min);
 	}
 	catch (Exception e) {
+	    System.out.println(e.getMessage());
 	    System.out.println("The input array does not comply with the restriction that the program operates on a rotated and soted array");
 	}
+	System.out.println();
     }
 
     private static void test2() {
@@ -52,8 +63,10 @@ public class MinInRotatedSorted {
 	    System.out.println("The min element is: " + min);
 	}
 	catch (Exception e) {
+	    System.out.println(e.getMessage());
 	    System.out.println("The input array does not comply with the restriction that the program operates on a rotated and soted array");
 	}
+	System.out.println();
     }
 
     private static void test3() {
@@ -63,8 +76,10 @@ public class MinInRotatedSorted {
 	    System.out.println("The min element is: " + min);
 	}
 	catch (Exception e) {
+	    System.out.println(e.getMessage());
 	    System.out.println("The input array does not comply with the restriction that the program operates on a rotated and soted array");
 	}
+	System.out.println();
     }
 
     private static void test4() {
@@ -74,7 +89,35 @@ public class MinInRotatedSorted {
 	    System.out.println("The min element is: " + min);
 	}
 	catch (Exception e) {
+	    System.out.println(e.getMessage());
 	    System.out.println("The input array does not comply with the restriction that the program operates on a rotated and soted array");
 	}
+	System.out.println();
+    }
+
+    private static void test5() {
+	int[] arr = {9, 11, 16, 20, 31, 42};
+	try {
+	    int min = getMinInRotatedSorted(arr);
+	    System.out.println("The min element is: " + min);
+	}
+	catch (Exception e) {
+	    System.out.println(e.getMessage());
+	    System.out.println("The input array does not comply with the restriction that the program operates on a rotated and soted array");
+	}
+	System.out.println();
+    }
+
+     private static void test6() {
+	 int[] arr = {13, 4, 7, 8, 9, 10, 11, 12}; 
+	try {
+	    int min = getMinInRotatedSorted(arr);
+	    System.out.println("The min element is: " + min);
+	}
+	catch (Exception e) {
+	    System.out.println(e.getMessage());
+	    System.out.println("The input array does not comply with the restriction that the program operates on a rotated and soted array");
+	}
+	System.out.println();
     }
 }
