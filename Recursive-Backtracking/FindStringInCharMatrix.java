@@ -1,56 +1,124 @@
-public class FindStringInCharMatrix {
+public class Boggle {
+
+    private static boolean findMatch(char[][] arr, int dim, String word) {
+        // basic checks                                                                           
+        if (arr == null || dim <= 0 || word == null || word.length() == 0) {
+            return false;
+        }
+
+        // create a new 2D array to mark the used up words in the input array                     
+        // boolean arrays are initialized to false in java                                        
+        boolean[][] used = new boolean[dim][dim];
+
+        boolean matched = false;
+        for (int i = 0; i < dim; i++) {
+            for (int j = 0; j < dim; j++) {
+                // match first char of 'word' with any of the cells in the input grid             
+                matched = matchChars(arr, dim, i, j, word, 0, used);
+                if (matched) {
+                	return matched;
+               	}
+            }
+	}
+        // matched will always be false if we reach here !                                        
+        return matched;
+    }
+
+    private static boolean matchChars(char[][] arr, int dim, int i, int j, String word, int index, boolean[][] used) {
+        if (index == word.length()) {
+            return true;
+        }
+
+        // boundary check on 'arr'                                                                
+        if (i < 0 || j < 0 || i == dim || j == dim) {
+            return false;
+        }
+
+        if (word.charAt(index) != arr[i][j]) {
+            return false;
+        }
+        if (used[i][j] == true) {
+            return false;
+        }
+
+        used[i][j] = true;
+
+        // create traversal array for better code readability - Twitter baked idea !              
+        int[][] tr = {{-1, 0, 1, 0}, {0, 1, 0, -1}};
+        for (int k = 0; k < 4; k++) {
+
+            // char from grid has not been used                                                   
+            boolean ret = matchChars(arr, dim, i+tr[0][k], j+tr[1][k], word, index+1, used);
+            if (ret == true) {
+                return true;
+            }
+
+        }
+
+        used[i][j] = false;
+        return false;
+    }
+
     public static void main(String[] args) {
-	char[][] chars = {{'x', 'y', 'z'}, {'a', 'd', 'a'}, {'m', 'p', 'q'}};
-	boolean found = findWord(chars, "adam");
-	if (found) 
-	    System.out.println("The string adam has been found in the matrix");
-	else 
-	    System.out.println("The string adam has not been found in the matrix");
-	
-	found = findWord(chars, "adams");
-	if (found) 
-	    System.out.println("The string adams has been found in the matrix");
-	else 
-	    System.out.println("The string adams has not been found in the matrix");
+        char[][] arr = {{'x', 'x', 'x'}, {'b', 'a', 'd'}, {'x', 'x', 'x'}};
+        boolean found = findMatch(arr, 3, "bad");
+        if (found) {
+            System.out.println("The word bad was found in the input array");
+        } else {
+            System.out.println("The word bad was not found in the input array");
+        }
+        char[][] arr2 = {{'x', 'x', 'x'}, {'x', 'x', 'x'}, {'x', 'x', 'x'}};
+        found = findMatch(arr2, 3, "bad");
+        if (found) {
+            System.out.println("The word bad was found in the input array");
+        } else {
+            System.out.println("The word bad was not found in the input array");
+
+        if (used[i][j] == true) {
+            return false;
+        }
+
+        used[i][j] = true;
+
+        // create traversal array for better code readability - Twitter baked idea !              
+        int[][] tr = {{-1, 0, 1, 0}, {0, 1, 0, -1}};
+        for (int k = 0; k < 4; k++) {
+if (used[i][j] == true) {
+            return false;
+        }
+
+        used[i][j] = true;
+
+        // create traversal array for better code readability - Twitter baked idea !              
+        int[][] tr = {{-1, 0, 1, 0}, {0, 1, 0, -1}};
+        for (int k = 0; k < 4; k++) {
+
+            // char from grid has not been used                                                   
+            boolean ret = matchChars(arr, dim, i+tr[0][k], j+tr[1][k], word, index+1, used);
+            if (ret == true) {
+                return true;
+            }
+
+        }
+
+        used[i][j] = false;
+        return false;
     }
 
-    private static boolean findWord(char[][] chars, String str) {
-	int rows = chars.length;
-	// asssumning a non-skewed matrix
-	int cols = chars[0].length;
-
-	boolean[][] visited = new boolean[rows][cols];
-	for (int i = 0; i < rows; i++) 
-	    for (int j = 0; j < cols; j++) {
-		boolean found = match(chars, i, j, str, 0, visited);
-		if (found) 
-		    return found;
-	    }
-	
-	return false;
-    }
-
-    private static boolean match(char[][] chars, int r, int c, String str, int index, boolean[][] visited) {
-	if (str.length() == index) 
-	    return true;
-
-	if (r < 0 || r >= chars.length || c < 0 || c >= chars[0].length)
-	    return false;
-
-	if (visited[r][c] == true || str.charAt(index) != chars[r][c]) 
-	    return false;
-
-	// mark cell
-	visited[r][c] = true;
-
-	boolean matched = match(chars, r+1, c, str, index+1, visited) || match(chars, r-1, c, str, index+1, visited) || match(chars, r, c+1, str, index+1, visited) || match(chars, r, c-1, str, index+1, visited);
-
-	if (matched) 
-	    return matched;
-
-	// un-mark cell
-	visited[r][c] = false;
-	
-	return matched;
+    public static void main(String[] args) {
+        char[][] arr = {{'x', 'x', 'x'}, {'b', 'a', 'd'}, {'x', 'x', 'x'}};
+        boolean found = findMatch(arr, 3, "bad");
+        if (found) {
+            System.out.println("The word bad was found in the input array");
+        } else {
+            System.out.println("The word bad was not found in the input array");
+        }
+        char[][] arr2 = {{'x', 'x', 'x'}, {'x', 'x', 'x'}, {'x', 'x', 'x'}};
+        found = findMatch(arr2, 3, "bad");
+        if (found) {
+            System.out.println("The word bad was found in the input array");
+        } else {
+            System.out.println("The word bad was not found in the input array");
+        }
     }
 }
