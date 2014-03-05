@@ -59,53 +59,7 @@ public class Boggle {
         return false;
     }
 
-    public static void main(String[] args) {
-        char[][] arr = {{'x', 'x', 'x'}, {'b', 'a', 'd'}, {'x', 'x', 'x'}};
-        boolean found = findMatch(arr, 3, "bad");
-        if (found) {
-            System.out.println("The word bad was found in the input array");
-        } else {
-            System.out.println("The word bad was not found in the input array");
-        }
-        char[][] arr2 = {{'x', 'x', 'x'}, {'x', 'x', 'x'}, {'x', 'x', 'x'}};
-        found = findMatch(arr2, 3, "bad");
-        if (found) {
-            System.out.println("The word bad was found in the input array");
-        } else {
-            System.out.println("The word bad was not found in the input array");
-
-        if (used[i][j] == true) {
-            return false;
-        }
-
-        used[i][j] = true;
-
-        // create traversal array for better code readability - Twitter baked idea !              
-        int[][] tr = {{-1, 0, 1, 0}, {0, 1, 0, -1}};
-        for (int k = 0; k < 4; k++) {
-if (used[i][j] == true) {
-            return false;
-        }
-
-        used[i][j] = true;
-
-        // create traversal array for better code readability - Twitter baked idea !              
-        int[][] tr = {{-1, 0, 1, 0}, {0, 1, 0, -1}};
-        for (int k = 0; k < 4; k++) {
-
-            // char from grid has not been used                                                   
-            boolean ret = matchChars(arr, dim, i+tr[0][k], j+tr[1][k], word, index+1, used);
-            if (ret == true) {
-                return true;
-            }
-
-        }
-
-        used[i][j] = false;
-        return false;
-    }
-
-    public static void main(String[] args) {
+public static void main(String[] args) {
         char[][] arr = {{'x', 'x', 'x'}, {'b', 'a', 'd'}, {'x', 'x', 'x'}};
         boolean found = findMatch(arr, 3, "bad");
         if (found) {
