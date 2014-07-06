@@ -1,5 +1,6 @@
 /*
-  Given matrix MxN of 0s and 1s, output all groups of adjacent 1s in form of SetID: (row,coll)... 1s are considered adjacent if they are adjacent horizontally or vertically.
+  Given matrix MxN of 0s and 1s, output all groups of adjacent 1s in form of SetID: (row,coll)... 
+  1s are considered adjacent if they are adjacent horizontally or vertically.
 
 1 1 0 1 0 1
 1 1 1 1 0 1
